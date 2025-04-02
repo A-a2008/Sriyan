@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-oslbm#rkuccnyz!)54+^@efo=s8#g6%%3mdanpnbs1i*&nxf4@
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["sriyan.pythonanywhere.com"]
 
 
 # Application definition
@@ -87,6 +87,17 @@ DATABASES = {
     }
 }
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': "sriyan$Sriyan",
+#         'USER': "sriyan",
+#         'PASSWORD': "sriyandbpassword1234",
+#         'HOST': 'sriyan.mysql.pythonanywhere-services.com',
+#         'PORT': '3306'
+#     }
+# }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
@@ -123,6 +134,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = join(BASE_DIR, "assets")
 
 # Media files
 MEDIA_ROOT = join(BASE_DIR, 'media')
@@ -132,3 +144,11 @@ MEDIA_URL = '/media/'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = "sriyanasnanirajalbandi@gmail.com"
+EMAIL_HOST_PASSWORD = "iqtd hbqc bvdn llmy"
+

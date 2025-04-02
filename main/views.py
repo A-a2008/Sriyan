@@ -7,6 +7,7 @@ from django.apps import apps
 import tempfile
 import os
 import datetime
+from django.core.mail import send_mail
 
 recognizer = sr.Recognizer()
 
@@ -89,6 +90,16 @@ def get_updated_audio_files(request):
         }
         for audio in new_audio_files if audio.mood == "sad"
     ]
+
+    current_datetime = datetime.datetime.now()
+
+    send_mail(
+        subject=f"API accessed at {current_datetime}",
+        message=f"Sriyan was switched on and accessed the API endpoint 'get_audio_files/' at {current_datetime}",
+        from_email="sriyanasnanirajalbandi@gmail.com",
+        recipient_list=["healthynessweb@gmail.com"],
+        fail_silently=True,
+    )
 
     return JsonResponse({
         "happy": happy_files,
