@@ -1,0 +1,45 @@
+<html>
+    <head>
+        <title>Sriyan</title>
+    </head>
+    <body>
+        <h1>Welcome to Sriyan</h1>
+        <p>
+            {% for message in messages %}
+            message <br>
+            {% endfor %}
+        </p>
+        <p>Upload Files</p>
+        <table>
+            <thead>
+                <th>File Name</th>
+                <th>Date</th>
+                <th>Delete</th>
+            </thead>
+            <tbody>
+                {% for audio in audio_files %}
+                <tr>
+                    <td>{{ audio.file_name }}</td>
+                    <td>{{ audio.date_of_upload }}</td>
+                    <td><a href="#">Delete</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <br>
+        <form action="{% url 'home' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <label for="aduio">Audio File:</label>
+            <input type="file" name="audio_file" accept="aac" required>
+            <br><br>
+            <label for="mood">Mood:</label>
+            <select name="mood" id="mood">
+                <option value="happy">Happy</option>
+                <option value="sad">Sad</option>
+            </select>
+            <br><br>
+            <input type="submit" value="Upload">
+        </form>
+        <button onclick="window.open('/admin', '_blank');">Admin</button>
+    </body>
+</html>
